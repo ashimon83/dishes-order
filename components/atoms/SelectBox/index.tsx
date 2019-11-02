@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styles from './styles.scss'
 import classnames from 'classnames'
 
@@ -17,17 +17,22 @@ const SelectBox: React.FC<Props> = ({
   disabled,
   handleOnChange
 }) => {
+  const [_value, setValue] = useState(value)
   return (
     <>
       <select
         className={classnames(styles.select, {
           [styles.selectError]: errorMessage
         })}
-        value={value}
-        onChange={e => handleOnChange(e.target.value)}
+        value={_value}
+        onChange={e => {
+          const selectedValue = e.target.value
+          setValue(selectedValue)
+          handleOnChange(selectedValue)
+        }}
         disabled={disabled}
       >
-        <option value="heading-select" key="heading-select">
+        <option value="" key="">
           --
         </option>
         {options &&

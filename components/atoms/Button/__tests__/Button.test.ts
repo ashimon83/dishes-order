@@ -1,3 +1,3 @@
-describe('Button', () => {
-  it.todo('when disabled it cant click' )
+describe('LinkButton', () => {
+  it.todo('when disabled it cant click')
 })
