@@ -11,7 +11,7 @@ const NavBar: React.FC<Props> = ({ currentNav }) => {
       <ul className={styles.navBar}>
         <li className={styles.navItem}>STEP1</li>
         <li className={styles.navItem}>STEP2</li>
-        <li className={styles.navItem}>STEP4</li>
+        <li className={styles.navItem}>STEP3</li>
         <li className={styles.navItem}>review</li>
       </ul>
     </nav>

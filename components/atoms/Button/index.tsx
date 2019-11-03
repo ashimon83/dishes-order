@@ -1,14 +1,19 @@
 import React from 'react'
+import classnames from 'classnames'
 import styles from './styles.scss'
 
 interface Props {
   text: string
   handleOnClick?: () => void
+  className?: string
 }
 
-const Button: React.FC<Props> = ({ text, handleOnClick }) => {
+const Button: React.FC<Props> = ({ text, handleOnClick, className }) => {
   return (
-    <button className={styles.button} onClick={handleOnClick}>
+    <button
+      className={classnames(styles.button, className)}
+      onClick={handleOnClick}
+    >
       {text}
     </button>
   )
