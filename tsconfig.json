@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "esnext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -20,8 +20,7 @@
     "jsx": "preserve"
   },
   "exclude": [
-    "node_modules",
-    "**/__tests__"
+    "node_modules"
   ],
   "include": [
     "next-env.d.ts",

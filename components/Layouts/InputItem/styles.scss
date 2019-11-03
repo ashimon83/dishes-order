@@ -1,4 +1,6 @@
 .inputItem {
+  display: flex;
+  flex-direction: column;
   width: 30vw;
   padding: 20px 0;
 }

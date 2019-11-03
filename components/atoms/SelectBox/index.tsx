@@ -4,10 +4,10 @@ import classnames from 'classnames'
 
 interface Props {
   options: Array<any>
-  value?: string
+  value?: any
   errorMessage?: string
   disabled?: boolean
-  handleOnChange: (value: string) => void
+  handleOnChange: (value: any) => void
 }
 
 const SelectBox: React.FC<Props> = ({

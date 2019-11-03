@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
 import MainLayout from '../components/Layouts/MainLayout'
 import InputItem from '../components/Layouts/InputItem'
 import Footer from '../components/Layouts/Footer'
 import SelectBox from '../components/atoms/SelectBox'
 import Button from '../components/atoms/Button'
+import {
+  updateMealType as _updateMealType,
+  updateNumOfPeople as _updateNumOfPeople
+} from '../redux/modules/order'
 import styles from './styles.scss'
 const PEOPLE_MAX_COUNT: number = 10
 
 const Step1 = () => {
+  // connect redux
+  const dispatch = useDispatch()
+  const order = useSelector(state => state.order)
+  console.log(order, 'order')
+  const { mealType, numOfPeople } = order
+  const updateMealType = (mealType: string) =>
+    dispatch(_updateMealType(mealType))
+  const updateNumOfPeople = (numOfPeople: number) =>
+    dispatch(_updateNumOfPeople(numOfPeople))
+
   const [inputValid, setInputValid] = useState(false)
   const [mealSelected, setMealSelected] = useState(false)
   const [peopleNumSelected, setPeopleNumSelected] = useState(false)
@@ -29,6 +44,7 @@ const Step1 = () => {
             ]}
             handleOnChange={value => {
               setMealSelected(!!value)
+              updateMealType(value)
               console.log(value)
             }}
             errorMessage={
@@ -44,10 +60,13 @@ const Step1 = () => {
             }))}
             handleOnChange={value => {
               setPeopleNumSelected(!!value)
+              updateNumOfPeople(value)
               console.log(value)
             }}
             errorMessage={
-              nextButtonTouched && !peopleNumSelected && 'please select people'
+              nextButtonTouched &&
+              !peopleNumSelected &&
+              'please select number of people'
             }
           />
         </InputItem>
