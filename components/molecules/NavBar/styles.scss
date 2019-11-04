@@ -18,3 +18,8 @@
   padding: 4px;
   margin: 0 -1px 0 0;
 }
+
+.navItemCurrent {
+  composes: navItem;
+  background-color: aqua;
+}

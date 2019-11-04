@@ -9,13 +9,14 @@ import Button from '.././../components/atoms/Button'
 import {
   getDishes,
   updateRestaurant as _updateRestaurant,
-  getMatchRestaurantSelector
+  getMatchRestaurantSelector,
+  updateValidSteps
 } from '../../redux/modules/order'
 
 const Step2 = () => {
   const router = useRouter()
   const order = useSelector(state => state.order)
-  const { restaurant } = order
+  const { restaurant, validSteps } = order
   const matchRestaurantNames = useSelector(getMatchRestaurantSelector)
   const dispatch = useDispatch()
   const updateRestaurant = (restaurant: string) =>
@@ -30,6 +31,19 @@ const Step2 = () => {
       value: name
     }))
   }, [matchRestaurantNames])
+  useEffect(() => {
+    dispatch(
+      updateValidSteps({
+        stepName: 'step2',
+        isValid: !!restaurant
+      })
+    )
+  }, [restaurant])
+  useEffect(() => {
+    if (!validSteps.step1) {
+      router.push('/')
+    }
+  }, [])
   return (
     <MainLayout>
       <InputItem label="Please Select a Restaurant">
@@ -46,15 +60,15 @@ const Step2 = () => {
         <Button
           text="previous"
           handleOnClick={() => {
-            router.push('/step2')
+            router.push('/')
           }}
         />
         <Button
           text="next"
           handleOnClick={() => {
             setNextButtonTouched(true)
-            if (restaurant) {
-              router.push('/step4')
+            if (validSteps.step2) {
+              router.push('/step3')
               return
             }
           }}

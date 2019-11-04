@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "deploy": "now",
     "start": "next start",
     "test": "jest",
     "ts-check": "tsc -p tsconfig.json --noEmit"

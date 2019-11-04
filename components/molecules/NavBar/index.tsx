@@ -1,4 +1,5 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 import styles from './styles.scss'
 
 interface Props {
@@ -6,13 +7,28 @@ interface Props {
 }
 
 const NavBar: React.FC<Props> = ({ currentNav }) => {
+  const route = useRouter()
+  const { pathname } = route
+  const STEP_NAMES = {
+    STEP1: '/',
+    STEP2: '/step2',
+    STEP3: '/step3',
+    review: '/review'
+  }
   return (
     <nav className={styles.wrap}>
       <ul className={styles.navBar}>
-        <li className={styles.navItem}>STEP1</li>
-        <li className={styles.navItem}>STEP2</li>
-        <li className={styles.navItem}>STEP3</li>
-        <li className={styles.navItem}>review</li>
+        {Object.keys(STEP_NAMES).map(name => (
+          <li
+            className={
+              STEP_NAMES[name] === pathname
+                ? styles.navItemCurrent
+                : styles.navItem
+            }
+          >
+            {name}
+          </li>
+        ))}
       </ul>
     </nav>
   )

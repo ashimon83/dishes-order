@@ -24,7 +24,6 @@ const Step1 = () => {
   const updateNumOfPeople = (numOfPeople: number) =>
     dispatch(_updateNumOfPeople(numOfPeople))
 
-  const inputValid = validSteps.step1
   const [nextButtonTouched, setNextButtonTouched] = useState(false)
   useEffect(() => {
     dispatch(
@@ -76,7 +75,7 @@ const Step1 = () => {
           text="next"
           handleOnClick={() => {
             setNextButtonTouched(true)
-            if (inputValid) {
+            if (validSteps.step1) {
               router.push('/step2')
               return
             }

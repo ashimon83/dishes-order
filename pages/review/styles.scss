@@ -1,0 +1,26 @@
+.reviewItem {
+  display: flex;
+  width: 100%;
+}
+
+.title {
+  width: 30vw;
+  padding: 20px;
+}
+
+.result {
+  padding: 20px;
+}
+
+.dishesResultList {
+  padding: 10px 20px;
+  white-space: nowrap;
+  border: 1px solid gray;
+  min-width: 200px;
+}
+
+.dishesResult {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 10px;
+}
