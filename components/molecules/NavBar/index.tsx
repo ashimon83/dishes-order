@@ -20,6 +20,7 @@ const NavBar: React.FC<Props> = ({ currentNav }) => {
       <ul className={styles.navBar}>
         {Object.keys(STEP_NAMES).map(name => (
           <li
+            key={name}
             className={
               STEP_NAMES[name] === pathname
                 ? styles.navItemCurrent

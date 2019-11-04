@@ -18,6 +18,7 @@ import {
 } from '../../redux/modules/order'
 import styles from './styles.scss'
 const DISH_MAX_COUNT = 10
+
 const Step3 = () => {
   const router = useRouter()
   const order = useSelector(state => state.order)

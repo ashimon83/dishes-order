@@ -8,7 +8,7 @@ import SelectBox from '../../components/atoms/SelectBox'
 import Button from '.././../components/atoms/Button'
 import {
   getDishes,
-  updateRestaurant as _updateRestaurant,
+  updateRestaurant,
   getMatchRestaurantSelector,
   updateValidSteps
 } from '../../redux/modules/order'
@@ -19,8 +19,6 @@ const Step2 = () => {
   const { restaurant, validSteps } = order
   const matchRestaurantNames = useSelector(getMatchRestaurantSelector)
   const dispatch = useDispatch()
-  const updateRestaurant = (restaurant: string) =>
-    dispatch(_updateRestaurant(restaurant))
   const [nextButtonTouched, setNextButtonTouched] = useState(false)
   useEffect(() => {
     dispatch(getDishes())
@@ -52,7 +50,7 @@ const Step2 = () => {
           options={restaurantOptions}
           errorMessage={nextButtonTouched && !restaurant && 'select restaurant'}
           handleOnChange={restaurant => {
-            updateRestaurant(restaurant)
+            dispatch(updateRestaurant(restaurant))
           }}
         />
       </InputItem>

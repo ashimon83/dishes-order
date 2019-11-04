@@ -8,7 +8,7 @@ module.exports = {
     '\\.(css|scss)$': '<rootDir>/__mocks__/styleMock.js'
   },
   transform: {
-    '^.+\\.(ts|tsx)$': 'ts-jest'
+    '^.+\\.(ts|tsx)$': 'babel-jest'
   },
   testMatch: ['**/__tests__/*.+(ts|tsx)'],
   roots: ['<rootDir>/components', '<rootDir>/pages'],

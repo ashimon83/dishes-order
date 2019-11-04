@@ -7,8 +7,8 @@ import Footer from '../components/Layouts/Footer'
 import SelectBox from '../components/atoms/SelectBox'
 import Button from '../components/atoms/Button'
 import {
-  updateMealType as _updateMealType,
-  updateNumOfPeople as _updateNumOfPeople,
+  updateMealType,
+  updateNumOfPeople,
   updateValidSteps
 } from '../redux/modules/order'
 import styles from './styles.scss'
@@ -19,11 +19,6 @@ const Step1 = () => {
   const dispatch = useDispatch()
   const order = useSelector(state => state.order, false)
   const { mealType, numOfPeople, validSteps } = order
-  const updateMealType = (mealType: string) =>
-    dispatch(_updateMealType(mealType))
-  const updateNumOfPeople = (numOfPeople: number) =>
-    dispatch(_updateNumOfPeople(numOfPeople))
-
   const [nextButtonTouched, setNextButtonTouched] = useState(false)
   useEffect(() => {
     dispatch(
@@ -38,29 +33,29 @@ const Step1 = () => {
     <MainLayout>
       <InputItem label="Please Select a meal">
         <SelectBox
+          data-testid="mealSelect"
           value={mealType}
           options={[
             { key: 'breakfast', value: 'breakfast' },
             { key: 'lunch', value: 'lunch' },
             { key: 'dinner', value: 'dinner' }
           ]}
-          handleOnChange={value => {
-            updateMealType(value)
-            console.log(value)
+          handleOnChange={mealType => {
+            dispatch(updateMealType(mealType))
           }}
           errorMessage={nextButtonTouched && !mealType && 'please select meal'}
         />
       </InputItem>
       <InputItem label="Please Enter Number of people">
         <SelectBox
+          data-testid="numOfPeopleSelect"
           value={numOfPeople}
           options={[...Array(PEOPLE_MAX_COUNT).keys()].map(key => ({
             key: key + 1,
             value: key + 1
           }))}
-          handleOnChange={value => {
-            updateNumOfPeople(value)
-            console.log(value)
+          handleOnChange={numOfPeople => {
+            dispatch(updateNumOfPeople(numOfPeople))
           }}
           errorMessage={
             nextButtonTouched &&
