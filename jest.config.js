@@ -11,7 +11,7 @@ module.exports = {
     '^.+\\.(ts|tsx)$': 'babel-jest'
   },
   testMatch: ['**/__tests__/*.+(ts|tsx)'],
-  roots: ['<rootDir>/components', '<rootDir>/pages'],
+  roots: ['<rootDir>/pageTests', '<rootDir>/components'],
   globals: {
     'ts-jest': {
       isolatedModules: true,

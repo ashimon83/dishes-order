@@ -2,12 +2,11 @@ import React from 'react'
 import { render, cleanup, fireEvent } from '@testing-library/react'
 import * as nextRouter from 'next/router'
 
-import Step1 from '../..'
-
+import Step1 from '../../pages'
+afterEach(cleanup)
 nextRouter.useRouter = jest.fn()
 nextRouter.useRouter.mockImplementation(() => ({ pathname: '/' }))
 const mockDispatch = jest.fn()
-afterEach(cleanup)
 
 jest.mock('react-redux', () => ({
   useSelector: () => ({ mealType: '', numOfPeople: '', validSteps: {} }),
