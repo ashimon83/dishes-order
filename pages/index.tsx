@@ -30,7 +30,7 @@ const Step1 = () => {
   }, [mealType, numOfPeople])
   const router = useRouter()
   return (
-    <MainLayout>
+    <MainLayout title={`STEP1`}>
       <InputItem label="Please Select a meal">
         <SelectBox
           data-testid="mealSelect"
