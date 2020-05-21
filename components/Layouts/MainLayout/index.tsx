@@ -5,7 +5,7 @@ import styles from './styles.scss'
 interface Props {
   title?: string
 }
-const MainLayout: React.FC<Props> = ({ title, children }) => {
+const MainLayoutt: React.FC<Props> = ({ title, children }) => {
   return (
     <div className={styles.main}>
       <Helmet
@@ -20,4 +20,4 @@ const MainLayout: React.FC<Props> = ({ title, children }) => {
   )
 }
 
-export default MainLayout
+export default MainLayoutt
