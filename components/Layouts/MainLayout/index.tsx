@@ -20,4 +20,4 @@ const MainLayousst: React.FC<Props> = ({ title, children }) => {
   )
 }
 
-export default MainLayouttt
+export deafult MainLayouttt
